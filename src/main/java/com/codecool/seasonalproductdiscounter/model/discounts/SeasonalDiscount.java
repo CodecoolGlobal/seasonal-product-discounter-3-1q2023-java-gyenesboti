@@ -6,17 +6,23 @@ import com.codecool.seasonalproductdiscounter.model.products.Product;
 import java.time.LocalDate;
 
 public record SeasonalDiscount(String name, int rate, int seasonShift) implements Discount {
-    public boolean accepts(Product product, LocalDate date) {
-        Season shiftedSeason = product.season().shift(seasonShift);
-        return shiftedSeason.contains(date);
+    public boolean accepts (Product product, LocalDate date){
+        return false;
+    }
+
+    public String name () {
+        return name;
+    }
+
+    public int rate () {
+        return rate;
     }
 
     @Override
     public String toString() {
-        return "SeasonalDiscount{" +
+        return "Seasonal{" +
                 "name='" + name + '\'' +
                 ", rate=" + rate +
-                ", seasonShift=" + seasonShift +
                 '}';
     }
 }

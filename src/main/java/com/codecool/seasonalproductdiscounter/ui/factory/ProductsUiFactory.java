@@ -20,7 +20,7 @@ public class ProductsUiFactory extends UiFactoryBase {
 
     @Override
     public UiBase create() {
-        return new ProductsUi(authenticationService, productBrowser, getUiName());
+        return new ProductsUi(productBrowser, getUiName(), true);
     }
 }
 

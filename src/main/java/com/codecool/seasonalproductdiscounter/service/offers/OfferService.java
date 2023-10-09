@@ -6,6 +6,6 @@ import java.time.LocalDate;
 import java.util.List;
 
 public interface OfferService {
-    public List<Offer> getOffers(LocalDate date);
+    public List<Offer> getOffers();
 }
 

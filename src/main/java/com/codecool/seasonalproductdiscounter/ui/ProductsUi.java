@@ -9,8 +9,8 @@ import java.util.List;
 public class ProductsUi extends UiBase {
     private final ProductBrowser productBrowser;
 
-    public ProductsUi(AuthenticationService authenticationService, ProductBrowser productBrowser, String title) {
-        super(authenticationService, title);
+    public ProductsUi(ProductBrowser productBrowser, String title, boolean needsAuthentication) {
+        super(title, needsAuthentication);
         this.productBrowser = productBrowser;
     }
 

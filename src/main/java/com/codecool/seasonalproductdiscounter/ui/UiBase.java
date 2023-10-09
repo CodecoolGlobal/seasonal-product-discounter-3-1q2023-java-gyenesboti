@@ -6,12 +6,12 @@ import com.codecool.seasonalproductdiscounter.service.users.AuthenticationServic
 import java.util.Scanner;
 
 public abstract class UiBase {
-    private final AuthenticationService authenticationService;
     private final String title;
+    private final boolean needsAuthentication;
 
-    protected UiBase(AuthenticationService authenticationService, String title) {
+    protected UiBase(String title, boolean needsAuthentication) {
         this.title = title;
-        this.authenticationService = authenticationService;
+        this.needsAuthentication = needsAuthentication;
     }
 
     protected static String getTextInput(String text) {
@@ -25,19 +25,19 @@ public abstract class UiBase {
         return input;
     }
 
-    protected User getUser() {
-        // ...
-        return null;
+    public User getUser() {
+        Scanner scanner = new Scanner(System.in);
+        String username = getTextInput("Please enter your username!");
+        String password = getTextInput("Please enter your password!");
+        return new User(username, password);
+    }
+
+    public boolean isNeedsAuthentication() {
+        return needsAuthentication;
     }
 
     public void displayTitle() {
         System.out.println(title);
-    }
-
-    public boolean authenticate() {
-        User user = getUser();
-        // ...
-        return false;
     }
 
     public abstract void run();

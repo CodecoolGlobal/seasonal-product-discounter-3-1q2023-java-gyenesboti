@@ -18,4 +18,3 @@ public record Offer(Product product, LocalDate date, List<Discount> discounts, d
                 "Price", price);
     }
 }
-

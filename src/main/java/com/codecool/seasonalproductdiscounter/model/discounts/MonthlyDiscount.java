@@ -7,23 +7,23 @@ import java.time.Month;
 import java.util.Set;
 
 public record MonthlyDiscount(String name, int rate, Set<Month> months) implements Discount {
-    @Override
-    public boolean accepts(Product product, LocalDate date) {
-        for (Month month : months) {
-            if (month.getValue() == date.getMonthValue()) {
-                return true;
-            }
-        }
+    public boolean accepts (Product product, LocalDate date){
         return false;
+    }
+
+    public String name () {
+        return name;
+    }
+
+    public int rate () {
+        return rate;
     }
 
     @Override
     public String toString() {
-        return "MonthlyDiscount{" +
+        return "Monthly{" +
                 "name='" + name + '\'' +
                 ", rate=" + rate +
-                ", months=" + months +
                 '}';
     }
 }
-

@@ -1,5 +1,7 @@
 package com.codecool.seasonalproductdiscounter.model.enums;
 
+import com.codecool.seasonalproductdiscounter.model.products.Product;
+
 import java.time.LocalDate;
 import java.time.Month;
 import java.util.Set;
@@ -20,14 +22,18 @@ public enum Season {
         return months;
     }
 
-    public boolean contains(LocalDate date)
-    {
-        return this.months.contains(date.getMonth());
+    public boolean contains(Month month) {
+        return months.contains(month);
     }
 
-    public Season shift(int amount) {
-        int index = this.ordinal();
-        int shifted = (index + amount) % Season.values().length;
-        return Season.values()[shifted];
+
+    public Season shift(int amount, Product product) {
+        int seasonOrdinal = product.season().ordinal();
+        int finalOrdinal = Season.values().length-1;
+        if (seasonOrdinal + amount > finalOrdinal){
+            return Season.values()[seasonOrdinal - 1];
+        } else {
+            return Season.values()[seasonOrdinal + amount];
+        }
     }
 }

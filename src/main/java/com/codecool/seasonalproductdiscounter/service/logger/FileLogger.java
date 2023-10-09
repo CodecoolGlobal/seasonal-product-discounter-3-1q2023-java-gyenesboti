@@ -1,4 +1,4 @@
 package com.codecool.seasonalproductdiscounter.service.logger;
 
-public class ConsoleLogger extends LoggerBase {
+public class FileLogger extends LoggerBase{
 }
